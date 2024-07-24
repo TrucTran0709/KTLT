@@ -11,6 +11,7 @@ void tinhTongTungDong(int a[MAX][MAX], int m, int n);
 void phanTuLonNhatTrenCot(int a[MAX][MAX], int m, int n);
 void xuatDuongBien(int a[MAX][MAX], int m, int n);
 void xuatPhanTuCucDai(int a[MAX][MAX], int m, int n);
+void xuatPhanTuHoangHau(int a[MAX][MAX], int m, int n);
 
 int main() {
     int m, n, k, choice;
@@ -60,7 +61,7 @@ int main() {
            
             break;
         case 6:
-           
+            xuatPhanTuHoangHau(a, m, n);
             break;
         case 7:
            
@@ -180,5 +181,28 @@ void xuatPhanTuCucDai(int a[MAX][MAX], int m, int n) {
         printf("\n");
     }
 }
+void xuatPhanTuHoangHau(int a[MAX][MAX],int m, int n) {
+    printf("Phan tu hoang hau:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int is_queen = 1;
+            for (int k = 0; k < n; k++) {
+                if ( a[i][j] < a[i][k]) {
+                    is_queen = 0;
+                    break;
+                }
+            }
+            for (int k = 0; k < m; k++) {
+                if (a[i][j] < a[k][j]) {
+                    is_queen = 0;
+                    break;
+                }
+            }
+            if (is_queen) printf("%d ", a[i][j]);
+        }
+    }
+    printf("\n");
+}
+
 
 
