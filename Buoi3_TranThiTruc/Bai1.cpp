@@ -1,14 +1,15 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 #define MAX 100
 
-// Khai b�o c�c h�m
+// Khai báo các hàm
 void taoMaTran(int a[MAX][MAX], int m, int n, int k);
 void xuatMaTran(int a[MAX][MAX], int m, int n);
 void tinhTongTungDong(int a[MAX][MAX], int m, int n);
 void phanTuLonNhatTrenCot(int a[MAX][MAX], int m, int n);
+void xuatDuongBien(int a[MAX][MAX], int m, int n);
 
 int main() {
     int m, n, k, choice;
@@ -51,7 +52,7 @@ int main() {
             phanTuLonNhatTrenCot(a, m, n);
             break;
         case 4:
-          
+            xuatDuongBien(a, m, n);
             break;
         case 5:
            
@@ -119,4 +120,27 @@ void phanTuLonNhatTrenCot(int a[MAX][MAX], int m, int n) {
         }
         printf("Phan tu lon nhat tren cot %d: %d\n", j, max);
     }
+}
+
+// Xuất các phần tử thuộc đường biên trên, dưới, trái và phải
+void xuatDuongBien(int a[MAX][MAX], int m, int n) {
+    printf("Cac phan tu thuoc duong bien:\n");
+
+    for (int j = 0; j < n; j++) {
+        printf("%4d", a[0][j]);
+    }
+    printf("\n");
+
+    for (int i = 1; i < m - 1; i++) {
+        printf("%4d", a[i][0]); // Đường biên trái
+        for (int j = 1; j < n - 1; j++) {
+            printf("    ");
+        }
+        printf("%4d\n", a[i][n - 1]); // Đường biên phải
+    }
+
+    for (int j = 0; j < n; j++) {
+        printf("%4d", a[m - 1][j]);
+    }
+    printf("\n");
 }
