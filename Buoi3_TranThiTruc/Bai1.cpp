@@ -13,6 +13,7 @@ void xuatDuongBien(int a[MAX][MAX], int m, int n);
 void xuatPhanTuCucDai(int a[MAX][MAX], int m, int n);
 void xuatPhanTuHoangHau(int a[MAX][MAX], int m, int n);
 void xuatPhanTuDiemYenNgua(int a[MAX][MAX], int m, int n);
+void xuatDongChiChuaSoChan(int a[MAX][MAX], int m, int n);
 
 int main() {
     int m, n, k, choice;
@@ -68,7 +69,7 @@ int main() {
             xuatPhanTuDiemYenNgua(a, m, n);
             break;
         case 8:
-           
+            xuatDongChiChuaSoChan(a, m, n);
             break;
         case 9:
           
@@ -227,5 +228,21 @@ void xuatPhanTuDiemYenNgua(int a[MAX][MAX],int m, int n) {
     printf("\n");
 }
 
-
-
+void xuatDongChiChuaSoChan(int a[MAX][MAX], int m, int n) {
+    printf("Dong chi chua so chan:\n");
+    for (int i = 0; i < m; i++) {
+        int all_even = 1;
+        for (int j = 0; j < n; j++) {
+            if (a[i][j] % 2 != 0) {
+                all_even = 0;
+                break;
+            }
+        }
+        if (all_even) {
+            for (int j = 0; j < n; j++) {
+                printf("%d ", a[i][j]);
+            }
+            printf("\n");
+        }
+    }
+}
