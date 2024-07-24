@@ -12,6 +12,7 @@ void phanTuLonNhatTrenCot(int a[MAX][MAX], int m, int n);
 void xuatDuongBien(int a[MAX][MAX], int m, int n);
 void xuatPhanTuCucDai(int a[MAX][MAX], int m, int n);
 void xuatPhanTuHoangHau(int a[MAX][MAX], int m, int n);
+void xuatPhanTuDiemYenNgua(int a[MAX][MAX], int m, int n);
 
 int main() {
     int m, n, k, choice;
@@ -36,13 +37,13 @@ int main() {
     printf("9. Sap xep mang tang theo tung dong\n");
     printf("0. Thoat\n");
 
-    taoMaTran(a, m, n, k);
+    
 
     
     do {
         printf("Nhap lua chon: ");
         scanf_s("%d", &choice);
-
+        taoMaTran(a, m, n, k);
         switch (choice) {
         case 1:
             xuatMaTran(a, m, n);
@@ -64,7 +65,7 @@ int main() {
             xuatPhanTuHoangHau(a, m, n);
             break;
         case 7:
-           
+            xuatPhanTuDiemYenNgua(a, m, n);
             break;
         case 8:
            
@@ -199,6 +200,28 @@ void xuatPhanTuHoangHau(int a[MAX][MAX],int m, int n) {
                 }
             }
             if (is_queen) printf("%d ", a[i][j]);
+        }
+    }
+    printf("\n");
+}
+void xuatPhanTuDiemYenNgua(int a[MAX][MAX],int m, int n) {
+    printf("Phan tu yen ngua:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int is_saddle = 1;
+            for (int k = 0; k < n; k++) {
+                if (a[i][j] > a[i][k]) {
+                    is_saddle = 0;
+                    break;
+                }
+            }
+            for (int k = 0; k < m; k++) {
+                if (a[i][j] < a[k][j]) {
+                    is_saddle = 0;
+                    break;
+                }
+            }
+            if (is_saddle) printf("%d ", a[i][j]);
         }
     }
     printf("\n");
