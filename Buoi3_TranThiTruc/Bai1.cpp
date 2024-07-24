@@ -10,6 +10,7 @@ void xuatMaTran(int a[MAX][MAX], int m, int n);
 void tinhTongTungDong(int a[MAX][MAX], int m, int n);
 void phanTuLonNhatTrenCot(int a[MAX][MAX], int m, int n);
 void xuatDuongBien(int a[MAX][MAX], int m, int n);
+void xuatPhanTuCucDai(int a[MAX][MAX], int m, int n);
 
 int main() {
     int m, n, k, choice;
@@ -55,6 +56,7 @@ int main() {
             xuatDuongBien(a, m, n);
             break;
         case 5:
+            xuatPhanTuCucDai(a, m, n);
            
             break;
         case 6:
@@ -144,3 +146,39 @@ void xuatDuongBien(int a[MAX][MAX], int m, int n) {
     }
     printf("\n");
 }
+
+// Xuất các phần tử cực đại
+void xuatPhanTuCucDai(int a[MAX][MAX], int m, int n) {
+    printf("Cac phan tu cuc dai:\n");
+    int coCucDai = 0; 
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int isMax = 1;
+            // Kiểm tra các phần tử xung quanh
+            for (int x = i - 1; x <= i + 1; x++) {
+                for (int y = j - 1; y <= j + 1; y++) {
+                    // Kiểm tra các phần tử xung quanh (không vượt quá biên của ma trận)
+                    if (x >= 0 && x < m && y >= 0 && y < n && !(x == i && y == j)) {
+                        if (a[i][j] <= a[x][y]) {
+                            isMax = 0;
+                            break; 
+                        }
+                    }
+                }
+                if (!isMax) break; 
+            }
+            if (isMax) {
+                printf("%4d", a[i][j]);
+                coCucDai = 1; 
+            }
+        }
+    }
+    if (!coCucDai) {
+        printf("Khong co phan tu cuc dai.\n");
+    }
+    else {
+        printf("\n");
+    }
+}
+
+
