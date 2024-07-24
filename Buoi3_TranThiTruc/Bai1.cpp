@@ -7,6 +7,7 @@
 // Khai báo các hàm
 void taoMaTran(int a[MAX][MAX], int m, int n, int k);
 void xuatMaTran(int a[MAX][MAX], int m, int n);
+void tinhTongTungDong(int a[MAX][MAX], int m, int n);
 
 
 int main() {
@@ -44,7 +45,7 @@ int main() {
             xuatMaTran(a, m, n);
             break;
         case 2:
-           
+            tinhTongTungDong(a, m, n);
             break;
         case 3:
            
@@ -95,6 +96,16 @@ void xuatMaTran(int a[MAX][MAX], int m, int n) {
             printf("%4d", a[i][j]);
         }
         printf("\n");
+    }
+}
+
+void tinhTongTungDong(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        int sum = 0;
+        for (int j = 0; j < n; j++) {
+            sum += a[i][j];
+        }
+        printf("Tong dong %d: %d\n", i, sum);
     }
 }
 
