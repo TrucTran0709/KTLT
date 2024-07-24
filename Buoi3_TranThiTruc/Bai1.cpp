@@ -8,7 +8,7 @@
 void taoMaTran(int a[MAX][MAX], int m, int n, int k);
 void xuatMaTran(int a[MAX][MAX], int m, int n);
 void tinhTongTungDong(int a[MAX][MAX], int m, int n);
-
+void phanTuLonNhatTrenCot(int a[MAX][MAX], int m, int n);
 
 int main() {
     int m, n, k, choice;
@@ -48,7 +48,7 @@ int main() {
             tinhTongTungDong(a, m, n);
             break;
         case 3:
-           
+            phanTuLonNhatTrenCot(a, m, n);
             break;
         case 4:
           
@@ -109,3 +109,14 @@ void tinhTongTungDong(int a[MAX][MAX], int m, int n) {
     }
 }
 
+void phanTuLonNhatTrenCot(int a[MAX][MAX], int m, int n) {
+    for (int j = 0; j < n; j++) {
+        int max = a[0][j];
+        for (int i = 1; i < m; i++) {
+            if (a[i][j] > max) {
+                max = a[i][j];
+            }
+        }
+        printf("Phan tu lon nhat tren cot %d: %d\n", j, max);
+    }
+}
