@@ -48,6 +48,18 @@ void xuatDuongCheoSongSong(int a[MAX][MAX], int n) {
     }
 }
 
+int timMaxTamGiacTren(int a[MAX][MAX], int n) {
+    int max = a[0][0];
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            if (a[i][j] > max) {
+                max = a[i][j];
+            }
+        }
+    }
+    return max;
+}
+
 
 
 int main() {
@@ -87,6 +99,10 @@ int main() {
         case 3:
             xuatDuongCheoSongSong(a, n);
             break;
+        case 4:
+            printf("Phan tu lon nhat thuoc tam giac tren cua duong cheo chinh: %d\n", timMaxTamGiacTren(a, n));
+            break;
+
         case 0:
             printf("Thoat chuong trinh.\n");
             break;
