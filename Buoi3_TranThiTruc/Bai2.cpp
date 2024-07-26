@@ -22,6 +22,15 @@ void xuatMaTran(int a[MAX][MAX], int n) {
     }
 }
 
+void xuatDuongCheoChinh(int a[MAX][MAX], int n) {
+    printf("Cac phan tu tren duong cheo chinh:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%4d", a[i][i]);
+    }
+    printf("\n");
+}
+
+
 
 int main() {
     int a[MAX][MAX];
@@ -53,6 +62,9 @@ int main() {
             else {
                 printf("Cap ma tran phai lon hon hoac bang 5\n");
             }
+            break;
+        case 2:
+            xuatDuongCheoChinh(a, n);
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
