@@ -92,9 +92,24 @@ void sapXepZicZac(int a[MAX][MAX], int n) {
     }
 }
 
-
-
-
+void sapXepDuongCheoChinh(int a[MAX][MAX], int n) {
+    int b[MAX];
+    for (int i = 0; i < n; i++) {
+        b[i] = a[i][i];
+    }
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (b[i] > b[j]) {
+                int temp = b[i];
+                b[i] = b[j];
+                b[j] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        a[i][i] = b[i];
+    }
+}
 
 int main() {
     int a[MAX][MAX];
@@ -139,6 +154,11 @@ int main() {
         case 5:
             sapXepZicZac(a, n);
             printf("Ma tran sau khi sap xep tang dan theo kieu zic-zac:\n");
+            xuatMaTran(a, n);
+            break;
+        case 6:
+            sapXepDuongCheoChinh(a, n);
+            printf("Ma tran sau khi sap xep duong cheo chinh tang dan:\n");
             xuatMaTran(a, n);
             break;
         case 0:
