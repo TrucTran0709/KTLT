@@ -60,6 +60,40 @@ int timMaxTamGiacTren(int a[MAX][MAX], int n) {
     return max;
 }
 
+void sapXepZicZac(int a[MAX][MAX], int n) {
+    int b[MAX * MAX];
+    int k = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            b[k++] = a[i][j];
+        }
+    }
+    for (int i = 0; i < k - 1; i++) {
+        for (int j = i + 1; j < k; j++) {
+            if (b[i] > b[j]) {
+                int temp = b[i];
+                b[i] = b[j];
+                b[j] = temp;
+            }
+        }
+    }
+    k = 0;
+    for (int i = 0; i < n; i++) {
+        if (i % 2 == 0) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = b[k++];
+            }
+        }
+        else {
+            for (int j = n - 1; j >= 0; j--) {
+                a[i][j] = b[k++];
+            }
+        }
+    }
+}
+
+
+
 
 
 int main() {
@@ -102,7 +136,11 @@ int main() {
         case 4:
             printf("Phan tu lon nhat thuoc tam giac tren cua duong cheo chinh: %d\n", timMaxTamGiacTren(a, n));
             break;
-
+        case 5:
+            sapXepZicZac(a, n);
+            printf("Ma tran sau khi sap xep tang dan theo kieu zic-zac:\n");
+            xuatMaTran(a, n);
+            break;
         case 0:
             printf("Thoat chuong trinh.\n");
             break;
