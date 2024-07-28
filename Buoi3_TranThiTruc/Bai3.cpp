@@ -71,6 +71,28 @@ int demPhanTuChuaSo2(int a[MAX][MAX], int m, int n) {
     return count;
 }
 
+void xuatPhanTuCucTieu(int a[MAX][MAX], int m, int n) {
+    printf("Cac phan tu cuc tieu:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int isMin = 1;
+            for (int x = i - 1; x <= i + 1; x++) {
+                for (int y = j - 1; y <= j + 1; y++) {
+                    if (x >= 0 && x < m && y >= 0 && y < n && !(x == i && y == j)) {
+                        if (a[i][j] >= a[x][y]) {
+                            isMin = 0;
+                        }
+                    }
+                }
+            }
+            if (isMin) {
+                printf("%4d", a[i][j]);
+            }
+        }
+    }
+    printf("\n");
+}
+
 
 int main() {
     int a[MAX][MAX];
@@ -119,6 +141,9 @@ int main() {
             break;
         case 4:
             printf("So phan tu co chu so 2: %d\n", demPhanTuChuaSo2(a, m, n));
+            break;
+        case 5:
+            xuatPhanTuCucTieu(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
