@@ -121,6 +121,27 @@ void sapXepMaTranCot(int a[MAX][MAX], int m, int n) {
     }
 }
 
+int kiemTraGiamDan(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (a[i][j] < a[i][j + 1]) {
+                return 0;
+            }
+        }
+        if (i < m - 1 && a[i][n - 1] < a[i + 1][0]) {
+            return 0;
+        }
+    }
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i < m - 1; i++) {
+            if (a[i][j] < a[i + 1][j]) {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 
 int main() {
     int a[MAX][MAX];
@@ -182,6 +203,14 @@ int main() {
             sapXepMaTranCot(a, m, n);
             printf("Ma tran sau khi sap xep cot (chan tang, le giam):\n");
             xuatMaTran(a, m, n);
+            break;
+        case 8:
+            if (kiemTraGiamDan(a, m, n)) {
+                printf("Ma tran giam dan theo cot va dong.\n");
+            }
+            else {
+                printf("Ma tran khong giam dan theo cot va dong.\n");
+            }
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
