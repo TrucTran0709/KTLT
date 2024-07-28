@@ -41,6 +41,19 @@ void xuatCotToanLe(int a[MAX][MAX], int m, int n) {
     }
 }
 
+int timMaxTrenBien(int a[MAX][MAX], int m, int n) {
+    int max = a[0][0];
+    for (int i = 0; i < m; i++) {
+        if (a[i][0] > max) max = a[i][0];
+        if (a[i][n - 1] > max) max = a[i][n - 1];
+    }
+    for (int j = 0; j < n; j++) {
+        if (a[0][j] > max) max = a[0][j];
+        if (a[m - 1][j] > max) max = a[m - 1][j];
+    }
+    return max;
+}
+
 
 int main() {
     int a[MAX][MAX];
@@ -83,6 +96,9 @@ int main() {
             break;
         case 2:
             xuatCotToanLe(a, m, n);
+            break;
+        case 3:
+            printf("Phan tu lon nhat tren bien: %d\n", timMaxTrenBien(a, m, n));
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
