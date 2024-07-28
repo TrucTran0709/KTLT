@@ -54,6 +54,23 @@ int timMaxTrenBien(int a[MAX][MAX], int m, int n) {
     return max;
 }
 
+int demPhanTuChuaSo2(int a[MAX][MAX], int m, int n) {
+    int count = 0;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int temp = a[i][j];
+            while (temp != 0) {
+                if (temp % 10 == 2) {
+                    count++;
+                    break;
+                }
+                temp /= 10;
+            }
+        }
+    }
+    return count;
+}
+
 
 int main() {
     int a[MAX][MAX];
@@ -99,6 +116,9 @@ int main() {
             break;
         case 3:
             printf("Phan tu lon nhat tren bien: %d\n", timMaxTrenBien(a, m, n));
+            break;
+        case 4:
+            printf("So phan tu co chu so 2: %d\n", demPhanTuChuaSo2(a, m, n));
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
