@@ -93,6 +93,19 @@ void xuatPhanTuCucTieu(int a[MAX][MAX], int m, int n) {
     printf("\n");
 }
 
+void sapXepMaTranDong(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            for (int k = j + 1; k < n; k++) {
+                if ((i % 2 == 0 && a[i][j] > a[i][k]) || (i % 2 != 0 && a[i][j] < a[i][k])) {
+                    int temp = a[i][j];
+                    a[i][j] = a[i][k];
+                    a[i][k] = temp;
+                }
+            }
+        }
+    }
+}
 
 int main() {
     int a[MAX][MAX];
@@ -144,6 +157,11 @@ int main() {
             break;
         case 5:
             xuatPhanTuCucTieu(a, m, n);
+            break;
+        case 6:
+            sapXepMaTranDong(a, m, n);
+            printf("Ma tran sau khi sap xep dong (chan giam, le tang):\n");
+            xuatMaTran(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
