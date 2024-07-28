@@ -142,6 +142,22 @@ int kiemTraGiamDan(int a[MAX][MAX], int m, int n) {
     return 1;
 }
 
+void lietKeDongToanChan(int a[MAX][MAX], int m, int n) {
+    printf("Cac dong chi chua so chan:\n");
+    for (int i = 0; i < m; i++) {
+        int toanChan = 1;
+        for (int j = 0; j < n; j++) {
+            if (a[i][j] % 2 != 0) {
+                toanChan = 0;
+                break;
+            }
+        }
+        if (toanChan) {
+            printf("Dong %d\n", i);
+        }
+    }
+}
+
 
 int main() {
     int a[MAX][MAX];
@@ -211,6 +227,9 @@ int main() {
             else {
                 printf("Ma tran khong giam dan theo cot va dong.\n");
             }
+            break;
+        case 9:
+            lietKeDongToanChan(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
