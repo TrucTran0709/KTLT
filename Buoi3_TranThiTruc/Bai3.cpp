@@ -107,6 +107,21 @@ void sapXepMaTranDong(int a[MAX][MAX], int m, int n) {
     }
 }
 
+void sapXepMaTranCot(int a[MAX][MAX], int m, int n) {
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i < m - 1; i++) {
+            for (int k = i + 1; k < m; k++) {
+                if ((j % 2 == 0 && a[i][j] > a[k][j]) || (j % 2 != 0 && a[i][j] < a[k][j])) {
+                    int temp = a[i][j];
+                    a[i][j] = a[k][j];
+                    a[k][j] = temp;
+                }
+            }
+        }
+    }
+}
+
+
 int main() {
     int a[MAX][MAX];
     int m, n, k;
@@ -161,6 +176,11 @@ int main() {
         case 6:
             sapXepMaTranDong(a, m, n);
             printf("Ma tran sau khi sap xep dong (chan giam, le tang):\n");
+            xuatMaTran(a, m, n);
+            break;
+        case 7:
+            sapXepMaTranCot(a, m, n);
+            printf("Ma tran sau khi sap xep cot (chan tang, le giam):\n");
             xuatMaTran(a, m, n);
             break;
         case 0:
