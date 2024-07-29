@@ -158,6 +158,22 @@ void lietKeDongToanChan(int a[MAX][MAX], int m, int n) {
     }
 }
 
+void lietKeDongGiamDan(int a[MAX][MAX], int m, int n) {
+    printf("Cac dong chua gia tri giam dan:\n");
+    for (int i = 0; i < m; i++) {
+        int giamDan = 1;
+        for (int j = 0; j < n - 1; j++) {
+            if (a[i][j] < a[i][j + 1]) {
+                giamDan = 0;
+                break;
+            }
+        }
+        if (giamDan) {
+            printf("Dong %d\n", i);
+        }
+    }
+}
+
 
 int main() {
     int a[MAX][MAX];
@@ -230,6 +246,10 @@ int main() {
             break;
         case 9:
             lietKeDongToanChan(a, m, n);
+            break;
+
+        case 10:
+            lietKeDongGiamDan(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
