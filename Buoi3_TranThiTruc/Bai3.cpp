@@ -219,6 +219,32 @@ void timChuSoXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
     printf("voi %d lan.\n", maxCount);
 }
 
+void lietKeCotTongNhoNhat(int a[MAX][MAX], int m, int n) {
+    int minSum = 0;
+    for (int i = 0; i < m; i++) {
+        minSum += a[i][0];
+    }
+    for (int j = 1; j < n; j++) {
+        int sum = 0;
+        for (int i = 0; i < m; i++) {
+            sum += a[i][j];
+        }
+        if (sum < minSum) {
+            minSum = sum;
+        }
+    }
+    printf("Cac cot co tong nho nhat (%d):\n", minSum);
+    for (int j = 0; j < n; j++) {
+        int sum = 0;
+        for (int i = 0; i < m; i++) {
+            sum += a[i][j];
+        }
+        if (sum == minSum) {
+            printf("Cot %d\n", j);
+        }
+    }
+}
+
 
 int main() {
     int a[MAX][MAX];
@@ -301,6 +327,9 @@ int main() {
             break;
         case 12:
            timChuSoXuatHienNhieuNhat(a, m, n);
+            break;
+        case 13:
+            lietKeCotTongNhoNhat(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
