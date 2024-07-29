@@ -174,6 +174,22 @@ void lietKeDongGiamDan(int a[MAX][MAX], int m, int n) {
     }
 }
 
+int timGiaTriXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
+    int freq[MAX * MAX] = { 0 };
+    int maxCount = 0, maxValue = a[0][0];
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            freq[a[i][j]]++;
+            if (freq[a[i][j]] > maxCount) {
+                maxCount = freq[a[i][j]];
+                maxValue = a[i][j];
+            }
+        }
+    }
+    return maxValue;
+}
+
+
 
 int main() {
     int a[MAX][MAX];
@@ -250,6 +266,9 @@ int main() {
 
         case 10:
             lietKeDongGiamDan(a, m, n);
+            break;
+        case 11:
+            printf("Gia tri xuat hien nhieu nhat: %d\n", timGiaTriXuatHienNhieuNhat(a, m, n));
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
