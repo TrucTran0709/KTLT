@@ -189,6 +189,35 @@ int timGiaTriXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
     return maxValue;
 }
 
+void timChuSoXuatHienNhieuNhat(int a[MAX][MAX], int m, int n) {
+    int freq[10] = { 0 };
+    int maxCount = 0;
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int temp = a[i][j];
+            while (temp != 0) {
+                int digit = temp % 10;
+                freq[digit]++;
+                temp /= 10;
+            }
+        }
+    }
+
+    for (int i = 0; i < 10; i++) {
+        if (freq[i] > maxCount) {
+            maxCount = freq[i];
+        }
+    }
+
+    printf("Cac chu so xuat hien nhieu nhat la: ");
+    for (int i = 0; i < 10; i++) {
+        if (freq[i] == maxCount) {
+            printf("%d ", i);
+        }
+    }
+    printf("voi %d lan.\n", maxCount);
+}
 
 
 int main() {
@@ -269,6 +298,9 @@ int main() {
             break;
         case 11:
             printf("Gia tri xuat hien nhieu nhat: %d\n", timGiaTriXuatHienNhieuNhat(a, m, n));
+            break;
+        case 12:
+           timChuSoXuatHienNhieuNhat(a, m, n);
             break;
         case 0:
             printf("Thoat chuong trinh.\n");
