@@ -26,6 +26,20 @@ double tongPhanSoKhongDeQuy(int n) {
     return tong;
 }
 
+
+double tongPhanSoLeDeQuy(int n) {
+    if (n == 0) return 0.0; 
+    return 1.0 / (2 * n - 1) + tongPhanSoLeDeQuy(n - 1);
+}
+
+
+double tongPhanSoLeKhongDeQuy(int n) {
+    double tong = 0.0;
+    for (int i = 1; i <= n; i++) { 
+        tong += 1.0 / (2 * i - 1);
+    }
+    return tong;
+}
 int main() {
     int choice, n;
     printf("Chon bai can tinh:\n");
@@ -52,6 +66,10 @@ int main() {
         case 2:
             printf("Ket qua bang de quy: %lf\n", tongPhanSoDeQuy(n));
             printf("Ket qua khong de quy: %lf\n", tongPhanSoKhongDeQuy(n));
+            break;
+        case 3:
+            printf("Ket qua bang de quy: %lf\n", tongPhanSoLeDeQuy(n));
+            printf("Ket qua khong de quy: %lf\n", tongPhanSoLeKhongDeQuy(n));
             break;
         case 5:
             printf("Thoat chuong trinh.\n");
